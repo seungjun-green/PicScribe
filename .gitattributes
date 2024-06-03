@@ -1,5 +1,1 @@
-# Track all model files
-**/*.mlmodel filter=lfs diff=lfs merge=lfs -text
-
-# Track all weight binary files
-**/weights/*.bin filter=lfs diff=lfs merge=lfs -text
+*.mlpackage filter=lfs diff=lfs merge=lfs -text
