@@ -44,7 +44,6 @@ struct ContentView: View {
                 let next_token_id = modelManager.indexOfMaxValue(in: pred)
                 
             
-                            
                 if next_token_id == 102 {
                     break
                 }
