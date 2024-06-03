@@ -10,8 +10,6 @@ import UIKit
 import CoreGraphics
 import SwiftUI
 import CoreML
-
-import UIKit
 import CoreVideo
 
 
@@ -24,6 +22,47 @@ struct ContentView: View {
     @State private var isLoading: Bool = false
 
     let modelManager = ModelManager()
+    
+    
+    func generate(img_embeddings: MLMultiArray) {
+        
+        
+        var token_array = Array(repeating: 0, count: 32)
+        token_array[0] = 101
+        var token_MLarray = modelManager.convertToMLMultiArray(token_array: [token_array])
+        
+        for i in 0...30 {
+            do {
+                let logit = try modelManager.decoder.prediction(image_embeddings: img_embeddings, txt: token_MLarray!).var_783
+                
+                // get the logit
+                let pred = try modelManager.extractSlice(from: logit, at: i)
+                
+                // 2. apply softmax
+                
+                // 3. get the index with higest vlaue
+                let next_token_id = modelManager.indexOfMaxValue(in: pred)
+                
+            
+                            
+                if next_token_id == 102 {
+                    break
+                }
+                
+                token_array[i+1] = Int(truncating: next_token_id as NSNumber)
+                token_MLarray = modelManager.convertToMLMultiArray(token_array: [token_array])
+                
+                generatedCaption = modelManager.constructString(data: [token_array])
+                
+            } catch {
+                print("Some error happened! :(")
+                generatedCaption = "Some error happened during generation. Please try again."
+            }
+            
+            
+        }
+                
+    }
     
     var body: some View {
         GeometryReader { geo in
@@ -45,9 +84,6 @@ struct ContentView: View {
                     }
                         
                 }
-
-                    
-
                
                 
                 Spacer()
@@ -99,9 +135,8 @@ struct ContentView: View {
 
                     
                         let image_feature =  modelManager.passEncoder(currentUIImage: currentUIImage)
-                        generatedCaption = modelManager.generate(img_embeddings: image_feature!)
-                        print(generatedCaption)
-
+                        generate(img_embeddings: image_feature!)
+                        
                         DispatchQueue.main.async {
                             isLoading = false
                         }

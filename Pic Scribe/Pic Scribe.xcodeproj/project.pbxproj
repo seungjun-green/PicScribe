@@ -12,9 +12,9 @@
 		C06C939F2C0863A100EA7A1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C06C939E2C0863A100EA7A1F /* Assets.xcassets */; };
 		C06C93A22C0863A100EA7A1F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C06C93A12C0863A100EA7A1F /* Preview Assets.xcassets */; };
 		C06C93A92C0864B500EA7A1F /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06C93A82C0864B500EA7A1F /* ModelManager.swift */; };
-		C07048602C0A18F3009F4C11 /* VIT_iOS_Encoder_v3.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = C070485F2C0A18F3009F4C11 /* VIT_iOS_Encoder_v3.mlpackage */; };
-		C07048642C0A2078009F4C11 /* iOS_Decoder_V2.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = C07048632C0A2078009F4C11 /* iOS_Decoder_V2.mlpackage */; };
 		C07048662C0A26FF009F4C11 /* index_to_word.json in Resources */ = {isa = PBXBuildFile; fileRef = C07048652C0A26FF009F4C11 /* index_to_word.json */; };
+		C07430FF2C0B9330001CE367 /* VIT_iOS_Encoder_v10.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = C07430FE2C0B9330001CE367 /* VIT_iOS_Encoder_v10.mlpackage */; };
+		C07431032C0C142F001CE367 /* iOS_Decoder_V14.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = C07431022C0C142F001CE367 /* iOS_Decoder_V14.mlpackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,9 +24,9 @@
 		C06C939E2C0863A100EA7A1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C06C93A12C0863A100EA7A1F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C06C93A82C0864B500EA7A1F /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
-		C070485F2C0A18F3009F4C11 /* VIT_iOS_Encoder_v3.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = VIT_iOS_Encoder_v3.mlpackage; sourceTree = "<group>"; };
-		C07048632C0A2078009F4C11 /* iOS_Decoder_V2.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = iOS_Decoder_V2.mlpackage; sourceTree = "<group>"; };
 		C07048652C0A26FF009F4C11 /* index_to_word.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = index_to_word.json; sourceTree = "<group>"; };
+		C07430FE2C0B9330001CE367 /* VIT_iOS_Encoder_v10.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = VIT_iOS_Encoder_v10.mlpackage; sourceTree = "<group>"; };
+		C07431022C0C142F001CE367 /* iOS_Decoder_V14.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = iOS_Decoder_V14.mlpackage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +62,8 @@
 				C06C939A2C0863A000EA7A1F /* Pic_ScribeApp.swift */,
 				C06C939C2C0863A000EA7A1F /* ContentView.swift */,
 				C06C93A82C0864B500EA7A1F /* ModelManager.swift */,
-				C070485F2C0A18F3009F4C11 /* VIT_iOS_Encoder_v3.mlpackage */,
-				C07048632C0A2078009F4C11 /* iOS_Decoder_V2.mlpackage */,
+				C07430FE2C0B9330001CE367 /* VIT_iOS_Encoder_v10.mlpackage */,
+				C07431022C0C142F001CE367 /* iOS_Decoder_V14.mlpackage */,
 				C07048652C0A26FF009F4C11 /* index_to_word.json */,
 				C06C939E2C0863A100EA7A1F /* Assets.xcassets */,
 				C06C93A02C0863A100EA7A1F /* Preview Content */,
@@ -150,11 +150,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C07048602C0A18F3009F4C11 /* VIT_iOS_Encoder_v3.mlpackage in Sources */,
+				C07431032C0C142F001CE367 /* iOS_Decoder_V14.mlpackage in Sources */,
 				C06C939D2C0863A000EA7A1F /* ContentView.swift in Sources */,
+				C07430FF2C0B9330001CE367 /* VIT_iOS_Encoder_v10.mlpackage in Sources */,
 				C06C939B2C0863A000EA7A1F /* Pic_ScribeApp.swift in Sources */,
 				C06C93A92C0864B500EA7A1F /* ModelManager.swift in Sources */,
-				C07048642C0A2078009F4C11 /* iOS_Decoder_V2.mlpackage in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

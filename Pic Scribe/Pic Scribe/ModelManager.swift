@@ -1,11 +1,21 @@
+//
+//  ModelManager.swift
+//  Pic Scribe
+//
+//  Created by SeungJun Lee on 5/30/24.
+//
+
 import Foundation
 import CoreML
 import UIKit
+import Foundation
+import CoreML
+import Accelerate
 
 class ModelManager {
     
-    var encoder: VIT_iOS_Encoder_v3
-    var decoder: iOS_Decoder_V2
+    var encoder: VIT_iOS_Encoder_v10
+    var decoder: iOS_Decoder_V14
     let indexToWord: [Int: String]
     
     
@@ -13,8 +23,8 @@ class ModelManager {
         
         let config = MLModelConfiguration()
         
-        encoder = try! VIT_iOS_Encoder_v3(configuration: config)
-        decoder = try! iOS_Decoder_V2(configuration: config)
+        encoder = try! VIT_iOS_Encoder_v10(configuration: config)
+        decoder = try! iOS_Decoder_V14(configuration: config)
         indexToWord = ModelManager.loadWordToIndexDictionary() ?? [:]
       
     }
@@ -50,38 +60,53 @@ class ModelManager {
     }
     
     
-    
-    func generate(img_embeddings: MLMultiArray) -> String {
-        
-        var token_array = Array(repeating: 0, count: 32)
-        token_array[0] = 101
-        var token_MLarray = convertToMLMultiArray(token_array: [token_array])
-        
-        for i in 0...30 {
-            do {
-                let pred = try decoder.prediction(image_embeddings: img_embeddings, txt: token_MLarray!).var_240
-                let next_token_id = pred[0]
-                
-                if next_token_id == 102 {
-                    break
-                }
-                
-                token_array[i+1] = Int(truncating: next_token_id)
-                token_MLarray = convertToMLMultiArray(token_array: [token_array])
-                
-            } catch {
-                print("Some error happened! ;(")
-            }
-            
-            
+    func extractSlice(from logits: MLMultiArray, at index: Int) throws -> MLMultiArray {
+        // Check dimensions
+        guard logits.shape.count == 3,
+              let dim1 = logits.shape[0] as? Int,
+              let dim2 = logits.shape[1] as? Int,
+              let dim3 = logits.shape[2] as? Int else {
+            throw NSError(domain: "Invalid dimensions", code: -1, userInfo: nil)
         }
         
-        print(token_array)
-        let res = constructString(data: [token_array])
-        print(res)
+        // Make sure the index is within the second dimension's bounds
+        guard index < dim2 && index >= 0 else {
+            throw NSError(domain: "Index out of bounds", code: -1, userInfo: nil)
+        }
         
-        return "Hello, World"
+        // Create a new MLMultiArray to store the slice
+        let slice = try MLMultiArray(shape: [NSNumber(value: dim1), NSNumber(value: dim3)], dataType: logits.dataType)
         
+        // Iterate over the required dimensions and fill the new MLMultiArray
+        for j in 0..<dim1 {
+            for k in 0..<dim3 {
+                let originalIndex = [j, index, k] as [NSNumber]
+                let newIndex = [j, k] as [NSNumber]
+                slice[newIndex] = logits[originalIndex]
+            }
+        }
+        
+        return slice
+    }
+    
+    func indexOfMaxValue(in array: MLMultiArray) -> Int {
+
+        var maxIndex = 0
+        var maxValue = Double(array[0].doubleValue)
+
+        for i in 1..<array.count {
+            let value = Double(array[i].doubleValue)
+            if value > maxValue {
+                maxValue = value
+                maxIndex = i
+            }
+        }
+        return maxIndex
+    }
+
+    
+    func removeHashes(from word: String) -> String {
+        return word.filter { $0 != "#" }
     }
     
     func constructString(data: [[Int]]) -> String {
@@ -93,8 +118,8 @@ class ModelManager {
         for index in real_data {
             
             let curr_word = indexToWord[index]!
-            if curr_word != "[CLS]" && curr_word != "[SEP]" {
-                result += curr_word
+            if curr_word != "[CLS]" && curr_word != "[SEP]" && curr_word != "[PAD]" {
+                result += removeHashes(from: curr_word)
                 result += " "
             }
             
@@ -175,4 +200,37 @@ class ModelManager {
         
     }
     
+}
+
+import AVFoundation
+
+
+public extension UIImage {
+    /// Resize image while keeping the aspect ratio. Original image is not modified.
+    /// - Parameters:
+    ///   - width: A new width in pixels.
+    ///   - height: A new height in pixels.
+    /// - Returns: Resized image.
+    func resize(_ width: Int, _ height: Int) -> UIImage {
+        // Keep aspect ratio
+        let maxSize = CGSize(width: width, height: height)
+
+        let availableRect = AVFoundation.AVMakeRect(
+            aspectRatio: self.size,
+            insideRect: .init(origin: .zero, size: maxSize)
+        )
+        let targetSize = availableRect.size
+
+        // Set scale of renderer so that 1pt == 1px
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = 1
+        let renderer = UIGraphicsImageRenderer(size: targetSize, format: format)
+
+        // Resize the image
+        let resized = renderer.image { _ in
+            self.draw(in: CGRect(origin: .zero, size: targetSize))
+        }
+
+        return resized
+    }
 }
