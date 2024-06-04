@@ -14,8 +14,11 @@ For more details about how the model is trained you can check out this notebook:
 [Creating Image Captioning model using PyTorch](https://github.com/seungjun-green/PicScribe/blob/master/Make%20Image%20Captioner%20Model.ipynb)
 
 And to know more about how to convert these models into CoreML models and to test check this out:
+
 [Converting two PyTorch models into CoreML models](https://github.com/seungjun-green/PicScribe/blob/master/Convert_PyTorch_Models_to_CoreML_Models.ipynb)
+
 [CoreML model - encoder](https://github.com/seungjun-green/PicScribe/tree/master/Pic%20Scribe/Pic%20Scribe/VIT_iOS_Encoder_v10.mlpackage)
+
 [CoreML model - decoder](https://github.com/seungjun-green/PicScribe/tree/master/Pic%20Scribe/Pic%20Scribe/iOS_Decoder_V14.mlpackage)
 
 ## How to use this project
