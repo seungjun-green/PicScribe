@@ -6,6 +6,7 @@ I made a image captioning model by using ViT as encoder and Transformer Decoder 
 Then deployed these models to iOS app by converting these models into CoreML and building an iOS app with SwiftUI.
 
 Here are some useful links of this repo:
+
 [Creating Image Captioning model using PyTorch](https://github.com/seungjun-green/PicScribe/blob/master/Make%20Image%20Captioner%20Model.ipynb)
 
 [Converting two PyTorch models into CoreML models](https://github.com/seungjun-green/PicScribe/blob/master/Convert_PyTorch_Models_to_CoreML_Models.ipynb)
