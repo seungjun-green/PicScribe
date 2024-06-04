@@ -7,8 +7,11 @@ Then deployed these models to iOS app by converting these models into CoreML and
 
 Here are some useful links of this repo:
 [Creating Image Captioning model using PyTorch](https://github.com/seungjun-green/PicScribe/blob/master/Make%20Image%20Captioner%20Model.ipynb)
+
 [Converting two PyTorch models into CoreML models](https://github.com/seungjun-green/PicScribe/blob/master/Convert_PyTorch_Models_to_CoreML_Models.ipynb)
+
 [CoreML model - encoder](https://github.com/seungjun-green/PicScribe/tree/master/Pic%20Scribe/Pic%20Scribe/VIT_iOS_Encoder_v10.mlpackage)
+
 [CoreML model - decoder](https://github.com/seungjun-green/PicScribe/tree/master/Pic%20Scribe/Pic%20Scribe/iOS_Decoder_V14.mlpackage)
 
 Plus you can download and test the model on HuggingFace too. HuggingFace
