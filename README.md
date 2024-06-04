@@ -30,13 +30,5 @@ cd Pic Scribe/Pic Scribe.xcodeproj
 ```
 then open this xcode project and build on ur mac machine.
 
-## Model Evaluation
-
-
-## Contributing
-Welcome any contributions to Pic Scribe! If you have suggestions or improvements, please fork the repository and submit a pull request.
-
-
-
 
 
