@@ -11,7 +11,7 @@ This project implements an image captioning model. The model uses a Vision Trans
 ## More Details about the model
 The image is first processed by a ViT_b_32 model (with the classification layer removed). This outputs a tensor of size (N, 768). This tensor is then reshaped to (N, 32, 768) to be compatible with the CrossMultiHeadAttention block in the decoder. The decoder itself has 44.3 million parameters. It takes an input with a shape of (N, max_length=32) and outputs a tensor with a shape of (N, max_length=32, vocab_size). BERT tokenizer is used for text preprocessing.
 
-Model Training Notebook: [Google Colab](https://github.com/seungjun-green/PicScribe/blob/master/Make%20Image%20Captioner%20Model.ipynb)
+For more details about training the model, loading model with [weights](https://github.com/seungjun-green/PicScribe/blob/master/checkpoint_epoch_0_batch_2400.pth) and doing inference, please check out this notebook: [Google Colab](https://github.com/seungjun-green/PicScribe/blob/master/Make%20Image%20Captioner%20Model.ipynb)
 
 ## Converting PyTorch Models to CoreML
 For details on converting these models into CoreML models and testing them, please refer to the following resources:
