@@ -13,7 +13,7 @@ Then deployed these models to iOS app by converting these models into CoreML and
 
 
 ## More Details about the model
-The image is passed to ViT_b_32(classification layer removed), and this outputs (N, 768) tensor. and this is repeated to (N, 32, 768) so that it can be passed as K, V to CrossMultiHeadAttention blcok in Decoder. The the decoder has 44.3M parameters. The input shape of decoder is (N, max_length=32), and output shape of the decoder is (N, max_length=32, vocab_size). The tokenizer I used is BERT. 
+The image is passed to ViT_b_32(classification layer removed), and this outputs (N, 768) tensor. and this is repeated to (N, 32, 768) so that it can be passed as K, V to CrossMultiHeadAttention blcok in Decoder. The the decoder has 44.3M parameters. The input shape of decoder is (N, max_length=32), and output shape of the decoder is (N, max_length=32, vocab_size).  The BERT tokenizer is used for text preprocessing. 
 
 For more details about how the model is trained u can find at here:
 [Creating Image Captioning model using PyTorch](https://github.com/seungjun-green/PicScribe/blob/master/Make%20Image%20Captioner%20Model.ipynb)
@@ -28,6 +28,10 @@ cd Pic Scribe/Pic Scribe.xcodeproj
 then open this xcode project and build on ur mac machine.
 
 ## Model Evaluation
+
+
+## Contributing
+Welcome any contributions to Pic Scribe! If you have suggestions or improvements, please fork the repository and submit a pull request.
 
 
 
