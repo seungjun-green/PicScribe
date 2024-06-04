@@ -1,7 +1,7 @@
 # Pic Scribe
 Example Inferene
-![2](https://github.com/seungjun-green/PicScribe/assets/60959924/c5e4dea1-adda-4b3a-b5c8-c37cee142cad)
-![1](https://github.com/seungjun-green/PicScribe/assets/60959924/c6d17347-49b2-49bc-bfba-4b6f976b01a8)
+![Screenshot 2024-06-05 at 3 09 10 AM](https://github.com/seungjun-green/PicScribe/assets/60959924/7d7d7837-5fa0-40e8-bb98-812b82b65374)
+
 
 [Demo Video(testing app on iPhone 13 Pro)](https://x.com/i/status/1797300456185864329)
 
