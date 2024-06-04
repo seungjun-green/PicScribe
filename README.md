@@ -23,12 +23,12 @@ And to know more about how to convert these models into CoreML models and to tes
 
 ## How to use this project
 
-Create a folder in ur computer and move to it then type this:
+Create a folder in your local machine and move to it then type this:
 ```
 git clone https://github.com/seungjun-green/PicScribe.git
-cd Pic Scribe/Pic Scribe.xcodeproj
+cd "Pic Scribe/Pic Scribe.xcodeproj"
 ```
-then open this xcode project and build on ur mac machine.
+Then open Open the Pic Scribe.xcodeproj file using Xcode.
 
 
 
