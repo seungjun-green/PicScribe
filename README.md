@@ -1,7 +1,6 @@
 # Pic Scribe
 
-
-(Demo Video(testing app on iPhone 13 Pro))[]
+[Demo Video(testing app on iPhone 13 Pro)](https://x.com/i/status/1797300456185864329)
 ## About the project
 
 I made a image captioning model by using ViT as encoder and Transformer Decoder as decoder, and training it with COCO2017 dataset. 
